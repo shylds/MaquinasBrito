@@ -22,7 +22,7 @@ public class ToolDAO {
         try(PreparedStatement pstm = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstm.setString(1, toolModel.getBrand());
             pstm.setString(2, toolModel.getModel());
-            pstm.setString(3, toolModel.getClas());
+            pstm.setString(3, toolModel.getToolClass());
             pstm.setString(4, toolModel.getSubClass());
 
             pstm.execute();
@@ -52,7 +52,7 @@ public class ToolDAO {
                 //toolModel.setId(rst.getInt(Integer.parseInt("id_tool")));
                 toolModel.setModel(rst.getString("model"));
                 toolModel.setBrand(rst.getString("brand"));
-                toolModel.setClas(rst.getString("class"));
+                toolModel.setToolClass(rst.getString("class"));
                 toolModel.setSubClass(rst.getString("subclass"));
 
             }
@@ -60,5 +60,35 @@ public class ToolDAO {
             pstm.close();
             this.connection.close();
         }
+    }
+
+    public void updaterToolsInBD(ToolModel toolModel) throws SQLException{
+        String sql = "UPDATE tools SET brand = ?, model =?, class = ?, subclass = ? WHERE id_tool = ? ";
+
+        PreparedStatement pstm = this.connection.prepareStatement(sql);
+        pstm.setString(1, toolModel.getBrand());
+        pstm.setString(2, toolModel.getModel());
+        pstm.setString(3, toolModel.getToolClass());
+        pstm.setString(4, toolModel.getSubClass());
+        pstm.setString(5, String.valueOf(toolModel.getId()));
+
+        pstm.execute();
+
+        pstm.close();
+        this.connection.close();
+        
+    }
+
+    public void deleterToolInBD(ToolModel toolModel) throws SQLException{
+        String sql = "DELETE FROM tools WHERE id_tool = ? ";
+
+        PreparedStatement pstm = this.connection.prepareStatement(sql);
+
+        pstm.setString(1, String.valueOf(toolModel.getId()));
+
+        pstm.execute();
+
+        pstm.close();
+        this.connection.close();
     }
 }

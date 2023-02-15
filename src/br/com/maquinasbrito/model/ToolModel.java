@@ -4,7 +4,7 @@ public class ToolModel {
     private int id;
     private String brand;
     private String model;
-    private String clas;
+    private String toolClass;
     private String subClass;
 
     public ToolModel(){
@@ -13,6 +13,14 @@ public class ToolModel {
 
     public ToolModel(int id){
         this.id = id;
+    }
+
+    public ToolModel(int id, String brand, String model, String toolClass, String subClass){
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.toolClass = toolClass;
+        this.subClass = subClass;
     }
 
     public Integer getId(){
@@ -27,8 +35,8 @@ public class ToolModel {
         return this.model;
     }
 
-    public String getClas(){
-        return this.clas;
+    public String getToolClass(){
+        return this.toolClass;
     }
 
     public String getSubClass(){
@@ -48,8 +56,8 @@ public class ToolModel {
         this.model = model;
     }
 
-    public void setClas(String clas){
-        this.clas = clas;
+    public void setToolClass(String toolClass){
+        this.toolClass = toolClass;
     }
 
     public void setSubClass(String subClass){

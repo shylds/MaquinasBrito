@@ -11,6 +11,6 @@ public class SeacherTools {
         ToolModel toolModel = new ToolModel(1);
 
         ToolModel returnTool = toolController.seacherTools(toolModel);
-            System.out.println("Maquina de retorno é: " + returnTool.getModel() + " "+ returnTool.getBrand() + " " + returnTool.getClas() + " " + returnTool.getSubClass());
+            System.out.println("Maquina de retorno é: " + returnTool.getModel() + " "+ returnTool.getBrand() + " " + returnTool.getToolClass() + " " + returnTool.getSubClass());
     }
 }

@@ -8,7 +8,7 @@ import br.com.maquinasbrito.model.ClientModel;
 public class DeleterClient {
     public static void main(String[] Args) throws SQLException{
         ClientController clientController = new ClientController();
-        ClientModel clientModel = new ClientModel(2);
+        ClientModel clientModel = new ClientModel(4);
 
         clientController.deleterClient(clientModel);
     }
